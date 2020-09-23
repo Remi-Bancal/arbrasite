@@ -1,40 +1,30 @@
-import React , {useState} from 'react';
+import React , {useState , useEffect} from 'react';
 import styled from 'styled-components';
 
-class ParasiteList extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {parasiteList: [], selected:1}
-    }
+function ParasiteList() {
 
-    async componentDidMount() {
+    const [parasiteList, setParasiteList] = useState([])
+    const [selected, setSelected] = useState(1)
+
+    useEffect(() => {
         const url = "parasites"
-        const response = await fetch(url);
-        const data = await response.json();
-        this.setState({parasiteList: data});
-    }
+        const response = fetch("parasites")
+        .then(response => response.json())
+        .then(json =>  setParasiteList(json))
+    }, [])
 
-    render() {
-        return (
-            <Container>
-            <TitleDiv>Liste des champignons</TitleDiv>
-            {this.state.parasiteList.map(parasite => (
-                <Parasite selected={parasite.id === this.state.selected}
-                  item={parasite} key={parasite.id}
-                />
-            ))}
-            </Container>
-        );  
-    }
-
-}
-
-class Parasite extends React.Component {
-    render() {
-        return (
-            <Item selected = {this.props.selected}>{this.props.item.latin_name} ({this.props.item.name})</Item>
-        );      
-    }
+    return (
+        <Container>
+        <TitleDiv>Liste des champignons</TitleDiv>
+        {parasiteList.map((parasite , index) => (
+            <Item selected={parasite.id === selected}
+                  key={index} 
+                  onClick={()=>setSelected(index+1)}>
+              {parasite.latin_name} ({parasite.name})
+            </Item>
+        ))}
+        </Container>
+    );  
 }
 
 export { ParasiteList }; 
