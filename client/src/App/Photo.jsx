@@ -79,10 +79,7 @@ const WideScreen = styled.div`
 `
 
 const Image = styled.img`
-    width: 100%;
-    height: 100%;
+    width:90%;
     padding: 5%;
-    border-left: 1px solid olive;
-    border-top: 2px solid olive;
     background: DarkKhaki;
 `
