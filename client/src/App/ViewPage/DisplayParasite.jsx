@@ -98,7 +98,6 @@ const StyledDiv = styled.div`
 const ValueDiv = styled.div`
     background: burlywood;
     padding: 2px 5px 2px 5px;
-    color: marroon;
 `
 const TitleLabel = styled.div`
     height: 20px;
@@ -107,7 +106,6 @@ const TitleLabel = styled.div`
     border-left: 1px solid olive;
     padding: 2px 2px 2px 2px;
     margin: 0px 0px 10px 0px;
-    color: marroon;
     font-weight: bold;
 `
 
@@ -117,5 +115,4 @@ const ParagraphLabel = styled.div`
     border-left: 1px solid olive;
     margin: 10px 0px 10px 0px;
     padding: 2px 2px 2px 2px;
-    color: marroon;
 `

@@ -59,9 +59,9 @@ const BigImage = styled.img`
     cursor: pointer;
     z-index: 3;
     display: flex;
-    height: 100%;
+    height: 92%;
     padding: 2%;
-    top: 0;
+    top: 0%;
     left:13%;
     border: 1px solid olive;
     background: DarkKhaki;

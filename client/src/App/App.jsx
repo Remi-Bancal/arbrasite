@@ -22,7 +22,6 @@ export { App };
 
 
 const GlobalContainer = styled.div`
-margin: 0;
 padding: 5px;
 background: #C5DA99;
 font-family: Arial, Helvetica, sans-serif;
