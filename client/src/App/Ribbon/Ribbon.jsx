@@ -1,17 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const RibbonState = {
+    VIEW:"view",
+    EDIT:"edit"
+};
+
+
 function Ribbon(props) {
 
     return (
         <Container>
-            <RibbonButton onClick={()=>props.setSelected("View")} selected={props.selected === "View"}>Vue liste</RibbonButton>
-            <RibbonButton onClick={()=>props.setSelected("Edit")} selected={props.selected === "Edit"}>Edition</RibbonButton>
+            <RibbonButton onClick={()=>props.setSelected(RibbonState.VIEW)} selected={props.selected === RibbonState.VIEW}>Vue liste</RibbonButton>
+            <RibbonButton onClick={()=>props.setSelected(RibbonState.EDIT)} selected={props.selected === RibbonState.EDIT}>Edition</RibbonButton>
         </Container>
     );  
 }
 
-export { Ribbon }; 
+export { Ribbon , RibbonState }; 
 
 const RibbonButton = styled.div`
 background-color: ${props => (props.selected ? 'burlywood' : 'beige')};

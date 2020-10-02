@@ -1,9 +1,8 @@
 import React , {useState , useEffect} from 'react';
-import { DisplayMushroom } from './DisplayParasite';
-import { ParasiteList } from './ParasiteList';
+import { ParasiteList } from '../ParasiteList';
 import styled from 'styled-components';
 
-function ListView() {
+function ListEdit() {
 
     const [parasiteList, setParasiteList] = useState([])
     const [selected, setSelected] = useState(1)
@@ -23,14 +22,13 @@ function ListView() {
     return (
         <Container>
             <ParasiteList parasites={parasiteList} selected={selected} setSelected={setSelected}/>
-            <DisplayMushroom parasite={parasiteList[selected-1]} />
         </Container>
         
     );  
 }
 
 
-export { ListView }; 
+export { ListEdit }; 
 
 const Container = styled.div`
 display: flex;

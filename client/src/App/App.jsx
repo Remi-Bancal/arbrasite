@@ -1,16 +1,18 @@
 import React , {useState} from 'react';
 import styled from 'styled-components';
-import { ListView , Ribbon} from '.';
+import { ListView , Ribbon , ListEdit } from '.';
+import { RibbonState } from './Ribbon/Ribbon';
 
 function App() {
 
-    const [selected, setSelected] = useState("View")
+    const [selected, setSelected] = useState(RibbonState.VIEW)
 
     return (
     <GlobalContainer>
         <Container>
             <Ribbon selected={selected} setSelected={setSelected}/>
-            {selected === "View" && <ListView/>}
+            {selected === RibbonState.VIEW && <ListView/>}
+            {selected === RibbonState.EDIT && <ListEdit/>}
         </Container>
     </GlobalContainer>
     );
