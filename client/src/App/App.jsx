@@ -1,18 +1,30 @@
-import React , {useState} from 'react';
+import React , {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import { ListView , Ribbon , ListEdit } from '.';
+import { ListView , Ribbon , ListEdit , AddView } from '.';
 import { RibbonState } from './Ribbon/Ribbon';
 
 function App() {
 
-    const [selected, setSelected] = useState(RibbonState.VIEW)
+    const [menu, setMenu] = useState(RibbonState.VIEW)
+    const [parasiteList, setParasiteList] = useState([])
+    const [selectedParasite, setSelectedParasite] = useState(1)
+
+    useEffect(() => {
+        async function fetchData () {
+            await fetch("parasites")
+            .then(response => response.json())
+            .then(json =>  setParasiteList(json))  
+        }
+        fetchData()
+    }, [])
 
     return (
     <GlobalContainer>
         <Container>
-            <Ribbon selected={selected} setSelected={setSelected}/>
-            {selected === RibbonState.VIEW && <ListView/>}
-            {selected === RibbonState.EDIT && <ListEdit/>}
+            <Ribbon menu={menu} setMenu={setMenu}/>
+            {menu === RibbonState.VIEW && <ListView selected={selectedParasite} setSelected={setSelectedParasite} parasiteList={parasiteList}/>}
+            {menu === RibbonState.EDIT && <ListEdit selected={selectedParasite} setSelected={setSelectedParasite} parasiteList={parasiteList}/>}
+            {menu === RibbonState.ADD && <AddView parasiteList={parasiteList}/>}
         </Container>
     </GlobalContainer>
     );

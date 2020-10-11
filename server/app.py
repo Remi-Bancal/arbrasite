@@ -209,7 +209,7 @@ def update_tree_essence(id):
 @app.route('/tree_essence/<id>', methods=['DELETE'])
 def delete_tree_essence(id):
     tree_essence = TreeEssence.query.get(id)
-    all_observations = Observation.query.filter_by(_id=id).all()
+    all_observations = Observation.query.filter_by(id=id).all()
     for observation in all_observations:
         delete_observation(observation.id)
     db.session.delete(tree_essence)

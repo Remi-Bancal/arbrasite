@@ -1,29 +1,17 @@
-import React , {useState , useEffect} from 'react';
+import React from 'react';
 import { DisplayMushroom } from './DisplayParasite';
 import { ParasiteList } from '../ParasiteList';
 import styled from 'styled-components';
 
-function ListView() {
+function ListView(props) {
 
-    const [parasiteList, setParasiteList] = useState([])
-    const [selected, setSelected] = useState(1)
-
-    useEffect(() => {
-        async function fetchData () {
-            await fetch("parasites")
-            .then(response => response.json())
-            .then(json =>  setParasiteList(json))  
-        }
-        fetchData()
-    }, [])
-
-    if (parasiteList.length === 0) {
+    if (props.parasiteList.length === 0) {
         return <div />
     }
     return (
         <Container>
-            <ParasiteList parasites={parasiteList} selected={selected} setSelected={setSelected}/>
-            <DisplayMushroom parasite={parasiteList[selected-1]} />
+            <ParasiteList parasites={props.parasiteList} selected={props.selected} setSelected={props.setSelected}/>
+            <DisplayMushroom parasite={props.parasiteList[props.selected-1]} />
         </Container>
         
     );  

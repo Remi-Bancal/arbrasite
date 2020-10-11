@@ -34,7 +34,6 @@ const Item = styled.div`
   padding: 2px 5px 2px 5px;
   border: ${props => (props.selected ? '2px solid olive' : '1px solid olive')};
   margin: 4px;
-  color: marroon;
   &:hover {
     background-color: ${props => (props.selected ? 'burlywood' : 'antiquewhite')};
   }
@@ -48,5 +47,4 @@ const TitleDiv = styled.div`
     padding: 2px 0px 2px 0px;
     border-bottom: 2px solid olive;
     font-weight: bold;
-    color: marroon;
 `
