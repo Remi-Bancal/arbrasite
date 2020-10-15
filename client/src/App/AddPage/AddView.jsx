@@ -1,7 +1,7 @@
-import React  from 'react';
-import { EssenceList, EssenceForm } from './Essence';
-import { ParasiteLists , ParasiteForm } from './Parasite';
-import styled from 'styled-components';
+import React  from 'react'
+import { EssenceList, EssenceForm } from './Essence'
+import { ParasiteLists , ParasiteForm } from './Parasite'
+import styled from 'styled-components'
 
 function AddView(props) {
 
@@ -12,15 +12,15 @@ function AddView(props) {
         <Container>
             <EssenceForm/>
             <EssenceList/>
-            <ParasiteForm/>
-            <ParasiteLists />
+            <ParasiteForm parasiteList={props.parasiteList} setParasiteList={props.setParasiteList}/>
+            <ParasiteLists parasiteList={props.parasiteList} setParasiteList={props.setParasiteList}/>
         </Container>
         
-    );  
+    )  
 }
 
 
-export { AddView }; 
+export { AddView } 
 
 const Container = styled.div`
 min-height:100px;

@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const RibbonState = {
     VIEW:"view",
@@ -16,7 +16,7 @@ function Ribbon(props) {
             <RibbonButton onClick={()=>props.setMenu(RibbonState.EDIT)} menu={props.menu === RibbonState.EDIT}>Edition</RibbonButton>
             <RibbonButton onClick={()=>props.setMenu(RibbonState.ADD)} menu={props.menu === RibbonState.ADD}>Ajout arbre/champignon</RibbonButton>
         </Container>
-    );  
+    )  
 }
 
 export { Ribbon , RibbonState }; 

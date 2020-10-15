@@ -1,7 +1,7 @@
-import React from 'react';
-import { DisplayMushroom } from './DisplayParasite';
-import { ParasiteList } from '../ParasiteList';
-import styled from 'styled-components';
+import React from 'react'
+import { DisplayMushroom } from './DisplayParasite'
+import { ParasiteList } from '../ParasiteList'
+import styled from 'styled-components'
 
 function ListView(props) {
 
@@ -14,11 +14,11 @@ function ListView(props) {
             <DisplayMushroom parasite={props.parasiteList[props.selected-1]} />
         </Container>
         
-    );  
+    )  
 }
 
 
-export { ListView }; 
+export { ListView } 
 
 const Container = styled.div`
 display: flex;

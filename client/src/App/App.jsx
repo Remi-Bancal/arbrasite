@@ -1,7 +1,7 @@
-import React , {useState, useEffect} from 'react';
-import styled from 'styled-components';
-import { ListView , Ribbon , ListEdit , AddView } from '.';
-import { RibbonState } from './Ribbon/Ribbon';
+import React , {useState, useEffect} from 'react'
+import styled from 'styled-components'
+import { ListView , Ribbon , ListEdit , AddView } from '.'
+import { RibbonState } from './Ribbon/Ribbon'
 
 function App() {
 
@@ -24,13 +24,13 @@ function App() {
             <Ribbon menu={menu} setMenu={setMenu}/>
             {menu === RibbonState.VIEW && <ListView selected={selectedParasite} setSelected={setSelectedParasite} parasiteList={parasiteList}/>}
             {menu === RibbonState.EDIT && <ListEdit selected={selectedParasite} setSelected={setSelectedParasite} parasiteList={parasiteList}/>}
-            {menu === RibbonState.ADD && <AddView parasiteList={parasiteList}/>}
+            {menu === RibbonState.ADD && <AddView parasiteList={parasiteList} setParasiteList={setParasiteList}/>}
         </Container>
     </GlobalContainer>
-    );
+    )
 }
 
-export { App }; 
+export { App } 
 
 
 const GlobalContainer = styled.div`

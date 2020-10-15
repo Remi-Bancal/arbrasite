@@ -1,6 +1,6 @@
-import React  from 'react';
-import { ParasiteList } from '../ParasiteList';
-import styled from 'styled-components';
+import React  from 'react'
+import { ParasiteList } from '../ParasiteList'
+import styled from 'styled-components'
 
 function ListEdit(props) {
 
@@ -12,11 +12,11 @@ function ListEdit(props) {
             <ParasiteList parasites={props.parasiteList} selected={props.selected} setSelected={props.setSelected}/>
         </Container>
         
-    );  
+    )  
 }
 
 
-export { ListEdit }; 
+export { ListEdit } 
 
 const Container = styled.div`
 display: flex;

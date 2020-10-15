@@ -1,6 +1,6 @@
-import React , {useState , useEffect} from 'react';
-import styled from 'styled-components';
-import { GalleryComponent , MainImage } from '../Photo';
+import React , {useState , useEffect} from 'react'
+import styled from 'styled-components'
+import { GalleryComponent , MainImage } from '../Photo'
 
 function DisplayMushroom(props) {
 
@@ -37,12 +37,13 @@ function DisplayMushroom(props) {
                         <Observation key={observation.id} obs_id={observation.id}/>))}
                 </GalleryContainer>
         </Container>
-    );  
+    )  
 }
 
 function Observation (props) {
 
     const [photos, setPhotos] = useState([])
+    const [bigImage, setBigImage] = useState(0)
 
     useEffect(() => {
         async function fetchData() {
@@ -56,12 +57,16 @@ function Observation (props) {
     return (
         <div>
             {photos.map(photo => (
-                <GalleryComponent key={photo.id} filename={photo.filename} />))}
+                <GalleryComponent key={photo.id} 
+                    filename={photo.filename} 
+                    big={bigImage} 
+                    img={photo.id} 
+                    setBig={setBigImage} />))}
         </div>
-    );
+    )
 }
 
-export { DisplayMushroom }; 
+export { DisplayMushroom }
 
 const Container = styled.div`
 width: 70%;

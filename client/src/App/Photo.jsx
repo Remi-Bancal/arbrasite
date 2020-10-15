@@ -1,47 +1,31 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 
-class GalleryComponent extends React.Component {
-    constructor(props){
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-        this.state = {filename: this.props.filename, isShown: false};
-    }
-    handleClick() {this.setState({isShown: !this.state.isShown })}
+function GalleryComponent(props) {
 
-    render() {
-        var src = "http://localhost:5000/uploads/" + this.state.filename;
-        return (
+    const src = "http://localhost:5000/uploads/" + props.filename
+    return (
         <>
-            <ImageChamp src= { src }
-            onClick={() =>this.handleClick()}
+          <ImageChamp src= { src }
+            onClick={() => props.big === 0 && props.setBig(props.img)}
           />
-          {this.state.isShown &&
+          {props.big === props.img &&
             (<>
                 <WideScreen />
-                <BigImage src= { src } onClick={() =>this.handleClick()}/>
-             </>)
+                <BigImage src= { src } onClick={() => props.setBig(0)}/>
+             </>) 
           }
         </>
-        );
-      }
+    )
 }
 
-class MainImage extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {filename: this.props.filename, isShown: false};
-    }
-
-    render() {
-        var src = "http://localhost:5000/uploads/" + this.state.filename;
-        return ( <Image src= { src }/> );
-      }
+function MainImage(props) {
+    const src = "http://localhost:5000/uploads/" + props.filename
+    return ( <Image src= { src }/> )
 }
 
-
-export { GalleryComponent , MainImage }; 
+export { GalleryComponent , MainImage }
 
 const ImageChamp = styled.img`
     display: flex;

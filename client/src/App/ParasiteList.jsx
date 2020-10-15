@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 function ParasiteList( props ) {
 
@@ -14,10 +14,10 @@ function ParasiteList( props ) {
             </Item>
         ))}
         </Container>
-    );  
+    )  
 }
 
-export { ParasiteList }; 
+export { ParasiteList } 
 
 const Container = styled.div`
 width: 15%;

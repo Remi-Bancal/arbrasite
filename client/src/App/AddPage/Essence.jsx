@@ -1,5 +1,5 @@
-import React , {useState, useEffect} from 'react';
-import styled from 'styled-components';
+import React , {useState, useEffect} from 'react'
+import styled from 'styled-components'
 
 function EssenceForm() {
 
@@ -7,7 +7,7 @@ function EssenceForm() {
     const [latinName, setLatinName] = useState("")
 
     const handleSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault()
         // Simple POST request with a JSON body using fetch
         const requestOptions = {
             method: 'POST',
@@ -16,9 +16,9 @@ function EssenceForm() {
                 name: name,
                 latin_name: latinName,
              })
-        };
-        fetch('tree_essence', requestOptions);
-    };
+        }
+        fetch('tree_essence', requestOptions)
+    }
 
         return (
         <FormContainer>
@@ -33,7 +33,7 @@ function EssenceForm() {
                 <SubmitButton type="submit" value="Envoyer"/>
             </form>
          </FormContainer>
-        );
+        )
 }
 
 function EssenceList() {
@@ -54,7 +54,7 @@ function EssenceList() {
                 <Essence item={essence} key={index}/>
                 ))}
             </>
-        );  
+        )  
 }
 
 function DeleteButton (props) {
@@ -65,14 +65,14 @@ function DeleteButton (props) {
         const requestOptions = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
-        };
+        }
         const url = 'tree_essence/' + parseInt(props.essence_id);
         fetch(url, requestOptions)
     }
 
         return (
           <DelButton onClick={handleSubmit} type="button" >Delete</DelButton>
-        );
+        )
 }
 
 function Essence(props) {
@@ -81,10 +81,10 @@ function Essence(props) {
                 <ValueDiv>{props.item.latin_name} ({props.item.name})</ValueDiv>
                 <DeleteButton essence_id={props.item.id}/>
             </StyledDiv>
-        );
+        )
 }
 
-export { EssenceList , EssenceForm }; 
+export { EssenceList , EssenceForm } 
 
 const StyledDiv = styled.div`
 display:flex;

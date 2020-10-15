@@ -1,7 +1,7 @@
-import React , {useState, useEffect} from 'react';
-import styled from 'styled-components';
+import React , { useState } from 'react'
+import styled from 'styled-components'
 
-function ParasiteForm() {
+function ParasiteForm(props) {
 
     const [name, setName] = useState("")
     const [latinName, setLatinName] = useState("")
@@ -18,9 +18,17 @@ function ParasiteForm() {
                 latin_name: latinName,
                 rottenness: rottenness === "rouge"
              })
-        };
-        fetch('parasite', requestOptions);
-    };
+        }
+        fetch('parasite', requestOptions)
+        .then(response=>response.json())
+        .then((json) =>{
+            const newList = props.parasiteList.concat(json)
+            props.setParasiteList(newList) 
+            setName("")
+            setLatinName("")
+            setRottenness("")
+        })
+    }
 
     return (
         <FormContainer>
@@ -39,28 +47,17 @@ function ParasiteForm() {
                 <SubmitButton type="submit" value="Envoyer"/>
             </form>
          </FormContainer>
-    );
+    )
 }
 
-function ParasiteLists() {
-
-    const [parasiteList, setParasiteList] = useState([])
-
-    useEffect(() => {
-        async function fetchData () {
-            await fetch("parasites")
-            .then(response => response.json())
-            .then(json =>  setParasiteList(json))  
-        }
-        fetchData()
-    }, [])
+function ParasiteLists(props) {
 
         return (
-            <>{parasiteList.map((parasite, index) => (
-                    <Parasite item={parasite} key={index}/>
+            <>{props.parasiteList.map((parasite, index) => (
+                    <Parasite item={parasite} key={index} list={props.parasiteList} setList={props.setParasiteList}/>
                 ))}
             </>
-        );  
+        )  
 }
 
 function DeleteButton (props) {
@@ -74,23 +71,28 @@ function DeleteButton (props) {
         };
         const url = 'parasite/' + parseInt(props.parasite_id);
         fetch(url, requestOptions)
+        .then(response=>response.json())
+        .then((json) =>{
+            const newList = props.list.filter((item) => item.id !== json.id)
+            props.setList(newList) 
+        })
     }
 
         return (
           <DelButton onClick={handleSubmit} type="button" >Delete</DelButton>
-        );
+        )
 }
 
 function Parasite (props) {
         return (
             <StyledDiv>
                 <ValueDiv>{props.item.latin_name} ({props.item.name})</ValueDiv>
-                <DeleteButton parasite_id={props.item.id}/>
+                <DeleteButton parasite_id={props.item.id} list={props.list} setList={props.setList}/>
             </StyledDiv>
-        );
+        )
 }
 
-export { ParasiteLists , ParasiteForm }; 
+export { ParasiteLists , ParasiteForm } 
 
 const StyledDiv = styled.div`
 display:flex;
